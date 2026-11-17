@@ -1,0 +1,387 @@
+{
+  "spreads": [
+    {
+      "file": "Spreads/Spread_u101.xml",
+      "pages": [
+        "u106"
+      ],
+      "text_frames": 7,
+      "rectangles": 8,
+      "ovals": 0
+    },
+    {
+      "file": "Spreads/Spread_u1c1.xml",
+      "pages": [
+        "u1c6",
+        "u1c7"
+      ],
+      "text_frames": 13,
+      "rectangles": 11,
+      "ovals": 0
+    },
+    {
+      "file": "Spreads/Spread_u312.xml",
+      "pages": [
+        "u317",
+        "u318"
+      ],
+      "text_frames": 15,
+      "rectangles": 7,
+      "ovals": 0
+    },
+    {
+      "file": "Spreads/Spread_u46c.xml",
+      "pages": [
+        "u471",
+        "u472"
+      ],
+      "text_frames": 17,
+      "rectangles": 6,
+      "ovals": 0
+    },
+    {
+      "file": "Spreads/Spread_u473.xml",
+      "pages": [
+        "u478",
+        "u479"
+      ],
+      "text_frames": 14,
+      "rectangles": 5,
+      "ovals": 0
+    },
+    {
+      "file": "Spreads/Spread_u47a.xml",
+      "pages": [
+        "u47f",
+        "u480"
+      ],
+      "text_frames": 7,
+      "rectangles": 3,
+      "ovals": 0
+    }
+  ],
+  "stories": [
+    {
+      "file": "Stories/Story_u10f.xml",
+      "length": 6,
+      "preview": "BRUTAL"
+    },
+    {
+      "file": "Stories/Story_u125.xml",
+      "length": 14,
+      "preview": "Olivia Rodrigo"
+    },
+    {
+      "file": "Stories/Story_u14f.xml",
+      "length": 4,
+      "preview": "SOUR"
+    },
+    {
+      "file": "Stories/Story_u165.xml",
+      "length": 4,
+      "preview": "GUTS"
+    },
+    {
+      "file": "Stories/Story_u17b.xml",
+      "length": 40,
+      "preview": "you seem pretty sad for a girl so inlove"
+    },
+    {
+      "file": "Stories/Story_u1a7.xml",
+      "length": 20,
+      "preview": "Por: Nataly Manrique"
+    },
+    {
+      "file": "Stories/Story_u1ca.xml",
+      "length": 16,
+      "preview": "ANTES DE LA FAMA"
+    },
+    {
+      "file": "Stories/Story_u1e0.xml",
+      "length": 180,
+      "preview": "Olivia Rodrigo nació el 20 de febrero de 2003 en California, Estados Unidos. Desde pequeña mostró interés por la música "
+    },
+    {
+      "file": "Stories/Story_u1f7.xml",
+      "length": 214,
+      "preview": "Antes de convertirse en una estrella del pop, Olivia participó en producciones como Bizaardvark y High School Musical: T"
+    },
+    {
+      "file": "Stories/Story_u20d.xml",
+      "length": 180,
+      "preview": "En enero de 2021 lanzó drivers license, canción que alcanzó un éxito internacional. Su popularidad marcó un antes y un d"
+    },
+    {
+      "file": "Stories/Story_u236.xml",
+      "length": 35,
+      "preview": "Cómo Olivia Rodrigo encontró su voz"
+    },
+    {
+      "file": "Stories/Story_u24c.xml",
+      "length": 6,
+      "preview": "BRUTAL"
+    },
+    {
+      "file": "Stories/Story_u262.xml",
+      "length": 1,
+      "preview": "2"
+    },
+    {
+      "file": "Stories/Story_u28e.xml",
+      "length": 27,
+      "preview": "El comienzo de una historia"
+    },
+    {
+      "file": "Stories/Story_u2a4.xml",
+      "length": 6,
+      "preview": "BRUTAL"
+    },
+    {
+      "file": "Stories/Story_u2ba.xml",
+      "length": 1,
+      "preview": "3"
+    },
+    {
+      "file": "Stories/Story_u2e6.xml",
+      "length": 510,
+      "preview": "Lanzado el 21 de mayo de 2021, SOUR es el primer álbum de estudio de Olivia Rodrigo. Este proyecto marcó el inicio de su"
+    },
+    {
+      "file": "Stories/Story_u2fd.xml",
+      "length": 121,
+      "preview": "Datos destacados:- Lanzamiento: 21 de mayo de 2021. - Álbum debut.  - Géneros: pop, pop rock y pop punk. - Canciones: 11"
+    },
+    {
+      "file": "Stories/Story_u31b.xml",
+      "length": 32,
+      "preview": "Las canciones que cambiaron todo"
+    },
+    {
+      "file": "Stories/Story_u33f.xml",
+      "length": 6,
+      "preview": "BRUTAL"
+    },
+    {
+      "file": "Stories/Story_u355.xml",
+      "length": 1,
+      "preview": "4"
+    },
+    {
+      "file": "Stories/Story_u381.xml",
+      "length": 22,
+      "preview": "Del albúm al escenario"
+    },
+    {
+      "file": "Stories/Story_u397.xml",
+      "length": 6,
+      "preview": "BRUTAL"
+    },
+    {
+      "file": "Stories/Story_u3ad.xml",
+      "length": 1,
+      "preview": "5"
+    },
+    {
+      "file": "Stories/Story_u3cd.xml",
+      "length": 517,
+      "preview": "En 2022, Olivia Rodrigo realizó su primera gira de conciertos, la SOUR Tour. Durante esta etapa, presentó las canciones "
+    },
+    {
+      "file": "Stories/Story_u3ff.xml",
+      "length": 73,
+      "preview": "Drivers Licence: El desamor recordado al conducir sola por el vecindario."
+    },
+    {
+      "file": "Stories/Story_u415.xml",
+      "length": 65,
+      "preview": "Good 4 u: La rabia sarcástica de que tu ex te olvidó al instante."
+    },
+    {
+      "file": "Stories/Story_u42b.xml",
+      "length": 66,
+      "preview": "Deja Vu: El desprecio al ver que tu ex recicla tus citas con otra."
+    },
+    {
+      "file": "Stories/Story_u441.xml",
+      "length": 66,
+      "preview": "Traitor: El dolor de ver a un ex rehacer su vida demasiado rápido."
+    },
+    {
+      "file": "Stories/Story_u457.xml",
+      "length": 72,
+      "preview": "Favorite Crime: La culpa de haber permitido que te rompieran el corazón."
+    },
+    {
+      "file": "Stories/Story_u514.xml",
+      "length": 61,
+      "preview": "Con estas canciones, SOUR se convirtió en un fenómeno mundial"
+    },
+    {
+      "file": "Stories/Story_u56b.xml",
+      "length": 17,
+      "preview": "Una nueva versión"
+    },
+    {
+      "file": "Stories/Story_u582.xml",
+      "length": 6,
+      "preview": "BRUTAL"
+    },
+    {
+      "file": "Stories/Story_u599.xml",
+      "length": 1,
+      "preview": "6"
+    },
+    {
+      "file": "Stories/Story_u5ba.xml",
+      "length": 603,
+      "preview": "El 8 de septiembre de 2023, Olivia Rodrigo lanzó GUTS, su segundo álbum de estudio. Después del éxito de SOUR,  este nue"
+    },
+    {
+      "file": "Stories/Story_u5d3.xml",
+      "length": 192,
+      "preview": "Datos destacados:-Lanzamiento: 8 de septiembre de 2023. -Segundo álbum de estudio. -12 canciones en su edición estándar."
+    },
+    {
+      "file": "Stories/Story_u66b.xml",
+      "length": 29,
+      "preview": "Entre el caos y las emociones"
+    },
+    {
+      "file": "Stories/Story_u684.xml",
+      "length": 6,
+      "preview": "BRUTAL"
+    },
+    {
+      "file": "Stories/Story_u69b.xml",
+      "length": 1,
+      "preview": "7"
+    },
+    {
+      "file": "Stories/Story_u6b7.xml",
+      "length": 73,
+      "preview": "Vampire: Expresa la rabia tras una relación con una persona manipuladora."
+    },
+    {
+      "file": "Stories/Story_u6ce.xml",
+      "length": 85,
+      "preview": "Bad idea right?: Retrata con humor excusas para ver a un ex sabiendo que es un error."
+    },
+    {
+      "file": "Stories/Story_u6e5.xml",
+      "length": 85,
+      "preview": "Get him back!: El conflicto divertido entre querer volver con un ex y vengarse de él."
+    },
+    {
+      "file": "Stories/Story_u6fc.xml",
+      "length": 85,
+      "preview": "All-american bitch: Critica con sarcasmo y furia la presión de ser la mujer perfecta."
+    },
+    {
+      "file": "Stories/Story_u713.xml",
+      "length": 88,
+      "preview": "Teenage dream: Miedo profundo a crecer, y sentir que tus mejores años fueron muy pronto."
+    },
+    {
+      "file": "Stories/Story_u72f.xml",
+      "length": 121,
+      "preview": "En GUTS, Olivia presenta una combinación de emociones que refleja las dificultades de crecer y encontrar el propio lugar"
+    },
+    {
+      "file": "Stories/Story_u847.xml",
+      "length": 15,
+      "preview": "Una nueva etapa"
+    },
+    {
+      "file": "Stories/Story_u85e.xml",
+      "length": 6,
+      "preview": "BRUTAL"
+    },
+    {
+      "file": "Stories/Story_u875.xml",
+      "length": 1,
+      "preview": "8"
+    },
+    {
+      "file": "Stories/Story_u896.xml",
+      "length": 790,
+      "preview": "El tercer álbum de Olivia Rodrigo, lanzado el 12 de junio de 2026, es mucho más que una colección de canciones de amor. "
+    },
+    {
+      "file": "Stories/Story_u8af.xml",
+      "length": 93,
+      "preview": "Datos destacados:- Lanzamiento: 12 de junio de 2026. -Tercer álbum de estudio. -13 canciones."
+    },
+    {
+      "file": "Stories/Story_u8e6.xml",
+      "length": 29,
+      "preview": "La cronología de una relación"
+    },
+    {
+      "file": "Stories/Story_u8ff.xml",
+      "length": 6,
+      "preview": "BRUTAL"
+    },
+    {
+      "file": "Stories/Story_u916.xml",
+      "length": 1,
+      "preview": "9"
+    },
+    {
+      "file": "Stories/Story_u9f2.xml",
+      "length": 21,
+      "preview": "Una nueva experiencia"
+    },
+    {
+      "file": "Stories/Story_ua09.xml",
+      "length": 6,
+      "preview": "BRUTAL"
+    },
+    {
+      "file": "Stories/Story_ua20.xml",
+      "length": 1,
+      "preview": "5"
+    },
+    {
+      "file": "Stories/Story_ua39.xml",
+      "length": 544,
+      "preview": "En septiembre de 2026 comenzó The Unraveled Tour, la gira que acompaña el tercer álbum de Olivia Rodrigo. Anunciada en a"
+    },
+    {
+      "file": "Stories/Story_ua73.xml",
+      "length": 35,
+      "preview": "Girl so in loveEl comienzo del amor"
+    },
+    {
+      "file": "Stories/Story_ua8b.xml",
+      "length": 37,
+      "preview": "You seem pretty sadCuando todo cambia"
+    },
+    {
+      "file": "Stories/Story_uab9.xml",
+      "length": 347,
+      "preview": "“drop dead”, “stupid song” y “honeybee”: Representan la emoción de conocer a alguien, enamorarse y los primeros momentos"
+    },
+    {
+      "file": "Stories/Story_ub02.xml",
+      "length": 432,
+      "preview": "“the cure” y “what’s wrong with me”: Los problemas de la relación, las inseguridades y buscar una solución.  “begged” y "
+    },
+    {
+      "file": "Stories/Story_ub8f.xml",
+      "length": 18,
+      "preview": "The Unraveled Tour"
+    }
+  ],
+  "fonts": [
+    "Minion Pro",
+    "Myriad Pro",
+    "Kozuka Mincho Pr6N",
+    "Kristen ITC",
+    "Arial",
+    "Lucida Sans Typewriter",
+    "French Script MT",
+    "Source Serif Variable",
+    "Georgia"
+  ],
+  "colors": []
+}

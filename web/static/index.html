@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INDD Forensic Studio & Converter (Offline Edition)</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --border: #475569;
+            --radius: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .badge-offline {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .actions-panel {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: #0f172a;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            color: #ffffff;
+        }
+
+        .btn-success {
+            background-color: var(--success);
+            color: #0f172a;
+        }
+        .btn-success:hover {
+            background-color: #059669;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover {
+            background-color: var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Spreads Grid */
+        .spreads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .spread-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .spread-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .spread-thumb-container {
+            height: 380px;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .spread-thumb-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .spread-meta {
+            padding: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Assets Grid */
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .asset-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .asset-preview {
+            height: 180px;
+            background-color: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .asset-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .asset-info {
+            padding: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .asset-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Story Editor */
+        .story-editor-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 1.5rem;
+            height: 600px;
+        }
+
+        .stories-list {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow-y: auto;
+        }
+
+        .story-item {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .story-item:hover, .story-item.active {
+            background-color: var(--bg-card);
+        }
+
+        .story-item-title {
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .story-item-snippet {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .story-edit-pane {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .story-edit-pane textarea {
+            flex: 1;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            padding: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            resize: none;
+        }
+
+        .drop-zone {
+            border: 2px dashed var(--accent);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            background-color: rgba(56, 189, 248, 0.05);
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <h2>INDD Forensic Studio</h2>
+            <span class="badge-offline">100% Offline (Rust OODB Engine)</span>
+        </div>
+        <div id="doc-title" style="color: var(--text-secondary); font-size: 0.9rem;">
+            Cargando documento...
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Quick Downloads Panel -->
+        <div class="actions-panel">
+            <div>
+                <h3 style="margin-bottom: 4px;">Acciones de Conversión Inmediata</h3>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;">Generado sin Adobe Cloud ni licencias propietarias</p>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <a href="/api/download/package" class="btn btn-success">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    Descargar Paquete ZIP (IDML + Links/ Cero Cuadros Amarillos)
+                </a>
+                <a href="/api/download/idml" class="btn">
+                    Descargar IDML (InDesign 2023 / Universal)
+                </a>
+                <a href="/api/download/report" class="btn btn-secondary">
+                    Exportar Reporte JSON
+                </a>
+            </div>
+        </div>
+
+        <!-- Drop zone for new files -->
+        <div class="drop-zone" id="dropZone">
+            <p style="font-weight: bold; margin-bottom: 6px;">Arrastra otro archivo *.indd aquí para procesarlo instantáneamente</p>
+            <p style="color: var(--text-secondary); font-size: 0.8rem;">Ejecutado localmente por el binario Rust en RAM</p>
+            <input type="file" id="fileInput" accept=".indd" style="display: none;">
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Versión Detectada</div>
+                <div class="stat-value" id="stat-version">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Páginas / Spreads</div>
+                <div class="stat-value" id="stat-spreads">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Historias de Texto</div>
+                <div class="stat-value" id="stat-stories">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Familias Tipográficas</div>
+                <div class="stat-value" id="stat-fonts">--</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('spreads')">Pliegos & Páginas</button>
+            <button class="tab-btn" onclick="switchTab('stories')">Editor de Textos (Stories)</button>
+            <button class="tab-btn" onclick="switchTab('assets')">Recursos Extraídos (Imágenes)</button>
+            <button class="tab-btn" onclick="switchTab('forensics')">Auditoría OODB</button>
+        </div>
+
+        <!-- Tab 1: Spreads -->
+        <div id="tab-spreads" class="tab-content active">
+            <div class="spreads-grid" id="spreadsGrid">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+
+        <!-- Tab 2: Stories Editor -->
+        <div id="tab-stories" class="tab-content">
+            <div class="story-editor-layout">
+                <div class="stories-list" id="storiesList">
+                    <!-- Injected via JS -->
+                </div>
+                <div class="story-edit-pane">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h4 id="edit-story-name">Selecciona una historia</h4>
+                        <button class="btn btn-success" id="btn-save-story" onclick="saveActiveStory()" disabled>
+                            Guardar Cambios en IDML
+                        </button>
+                    </div>
+                    <textarea id="story-editor-textarea" placeholder="Contenido del texto..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Assets -->
+        <div id="tab-assets" class="tab-content">
+            <div class="assets-grid" id="assetsGrid">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+
+        <!-- Tab 4: Forensics -->
+        <div id="tab-forensics" class="tab-content">
+            <div class="stat-card" style="margin-bottom: 1rem;">
+                <h4 style="margin-bottom: 0.5rem;">Información del Objeto Maestro (Rust OODB Engine)</h4>
+                <pre id="raw-info" style="font-family: monospace; font-size: 0.85rem; color: var(--accent); background: #000; padding: 1rem; border-radius: 6px; overflow-x: auto;"></pre>
+            </div>
+            <div class="stat-card">
+                <h4 style="margin-bottom: 0.5rem;">Tipografías Declaradas</h4>
+                <ul id="fonts-list" style="list-style: inside square; color: var(--text-secondary); line-height: 1.8;"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStories = [];
+        let activeStoryFile = null;
+
+        async function init() {
+            try {
+                const infoRes = await fetch('/api/document_info');
+                const info = await infoRes.json();
+                
+                document.getElementById('doc-title').innerText = `${info.file_name} (${(info.size_bytes / 1024 / 1024).toFixed(2)} MB)`;
+                document.getElementById('stat-version').innerText = info.version;
+                document.getElementById('stat-spreads').innerText = info.spreads_count;
+                document.getElementById('stat-stories').innerText = info.stories_count;
+                document.getElementById('stat-fonts').innerText = info.fonts.length;
+                document.getElementById('raw-info').innerText = info.raw_info;
+
+                const fontsList = document.getElementById('fonts-list');
+                fontsList.innerHTML = '';
+                info.fonts.forEach(f => {
+                    const li = document.createElement('li');
+                    li.innerText = f;
+                    fontsList.appendChild(li);
+                });
+
+                // Load pages
+                loadPages();
+                loadStories();
+                loadAssets();
+            } catch (err) {
+                console.error("Init error:", err);
+            }
+        }
+
+        async function loadPages() {
+            const res = await fetch('/api/pages');
+            const data = await res.json();
+            const grid = document.getElementById('spreadsGrid');
+            grid.innerHTML = '';
+
+            data.pages.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'spread-card';
+                card.innerHTML = `
+                    <div class="spread-thumb-container">
+                        <img src="${p.thumbnail_url}" alt="${p.name}">
+                    </div>
+                    <div class="spread-meta">
+                        <h4 style="font-size: 0.95rem; margin-bottom: 4px;">${p.name}</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.8rem;">${p.dimensions}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        async function loadStories() {
+            const res = await fetch('/api/stories');
+            const data = await res.json();
+            currentStories = data.stories;
+            const list = document.getElementById('storiesList');
+            list.innerHTML = '';
+
+            currentStories.forEach((s, idx) => {
+                const item = document.createElement('div');
+                item.className = 'story-item';
+                item.onclick = () => selectStory(idx, item);
+                item.innerHTML = `
+                    <div class="story-item-title">${s.file} (${s.length} chars)</div>
+                    <div class="story-item-snippet">${s.preview || 'Sin texto'}</div>
+                `;
+                list.appendChild(item);
+            });
+
+            if (currentStories.length > 0) {
+                selectStory(0, list.children[0]);
+            }
+        }
+
+        function selectStory(idx, elem) {
+            document.querySelectorAll('.story-item').forEach(el => el.classList.remove('active'));
+            if (elem) elem.classList.add('active');
+
+            const story = currentStories[idx];
+            activeStoryFile = story.file;
+            document.getElementById('edit-story-name').innerText = story.file;
+            document.getElementById('story-editor-textarea').value = story.preview;
+            document.getElementById('btn-save-story').disabled = false;
+        }
+
+        async function saveActiveStory() {
+            if (!activeStoryFile) return;
+            const newText = document.getElementById('story-editor-textarea').value;
+            const btn = document.getElementById('btn-save-story');
+            btn.innerText = 'Guardando...';
+            btn.disabled = true;
+
+            const res = await fetch('/api/stories/update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ story_file: activeStoryFile, new_text: newText })
+            });
+            const data = await res.json();
+            if (data.success) {
+                alert('Historia guardada con éxito en el IDML y paquete ZIP.');
+            } else {
+                alert('Error al guardar: ' + data.error);
+            }
+            btn.innerText = 'Guardar Cambios en IDML';
+            btn.disabled = false;
+        }
+
+        async function loadAssets() {
+            const res = await fetch('/api/assets');
+            const data = await res.json();
+            const grid = document.getElementById('assetsGrid');
+            grid.innerHTML = '';
+
+            data.assets.forEach(a => {
+                const card = document.createElement('div');
+                card.className = 'asset-card';
+                card.innerHTML = `
+                    <div class="asset-preview">
+                        <img src="${a.url}" alt="${a.name}">
+                    </div>
+                    <div class="asset-info">
+                        <div class="asset-title" title="${a.name}">${a.name}</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 0.75rem; color: var(--text-secondary);">${(a.size_bytes / 1024).toFixed(1)} KB</span>
+                            <a href="${a.url}" download="${a.name}" class="btn" style="padding: 4px 8px; font-size: 0.75rem;">Descargar</a>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function switchTab(name) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById('tab-' + name).classList.add('active');
+        }
+
+        // Drag & Drop
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+
+        dropZone.onclick = () => fileInput.click();
+
+        fileInput.onchange = (e) => {
+            if (e.target.files.length > 0) uploadFile(e.target.files[0]);
+        };
+
+        dropZone.ondragover = (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#10b981';
+        };
+
+        dropZone.ondragleave = () => {
+            dropZone.style.borderColor = 'var(--accent)';
+        };
+
+        dropZone.ondrop = (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = 'var(--accent)';
+            if (e.dataTransfer.files.length > 0) {
+                uploadFile(e.dataTransfer.files[0]);
+            }
+        };
+
+        async function uploadFile(file) {
+            dropZone.innerHTML = '<p>Procesando archivo binario en memoria con Rust...</p>';
+            const buffer = await file.arrayBuffer();
+            const res = await fetch('/api/upload', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/octet-stream' },
+                body: buffer
+            });
+            const data = await res.json();
+            if (data.success) {
+                location.reload();
+            } else {
+                alert('Error al subir: ' + data.error);
+                location.reload();
+            }
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>

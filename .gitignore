@@ -1,0 +1,5 @@
+# Build & Temp
+_temp*
+*.log
+/indd-utils/target/
+/indd-utils/.git/
