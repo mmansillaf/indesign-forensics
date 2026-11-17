@@ -3,3 +3,10 @@ _temp*
 *.log
 /indd-utils/target/
 /indd-utils/.git/
+*.indd
+*.idml
+*.zip
+extract_previews_bin
+extracted_links/
+extracted_metadata.xmp
+*.png
